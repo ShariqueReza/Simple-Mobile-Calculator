@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link href="index.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <header>
+      <!-- place navbar here -->
+    </header>
+    <main>
+      <div class="container calculator  bg-black col-sm-12 col-lg-3 text-center">
+        <div class="row">
+          <div class="col-6">
+            <p class="fs-3 text-white  text-center">Calculator</p>
+          </div>
+          <div class="col-6">
+            <p class="fs-3 text-white-50 text-center">Converter</p>
+          </div>
+          
+        </div>
+        <div>
+          <div class="container col-12 border-0 mb-3 fs-4 bg-black text-white text-end"  style="height:150px">
+          <h1 id="abc" class="text-end col-12"></h1>
+          <input type="text" id="inputBox" class="input_edit col-8 border-0 mb-3 fs-4 bg-black text-white text-end col-12"  >
+          </div>
+          <div class="button_edit">
+            <div class="mb-2 ms-2">
+              <button class="button operator bg-secondary border-0 text-warning rounded-2 col-2 me-2">AC</button>
+              <button class="button operator bg-secondary border-0 text-warning rounded-2 col-2 me-2">D</button>
+              <button class="button operator bg-secondary border-0 text-warning rounded-2 col-2 me-2">%</button>
+              <button class="button operator bg-secondary border-0 text-warning rounded-2 col-2 me-2">/</button>
+            </div>
+            <div class="mb-2 ms-2">
+              <button class="button bg-secondary border-0 text-white rounded-2 col-2 me-2">7</button>
+              <button class="button bg-secondary border-0 text-white rounded-2 col-2 me-2">8</button>
+              <button class="button bg-secondary border-0 text-white rounded-2 col-2 me-2">9</button>
+              <button class="button operator bg-secondary border-0 text-warning rounded-2 col-2 me-2">*</button>
+            </div>
+            <div class="mb-2 ms-2">
+              <button class="button bg-secondary border-0 text-white rounded-2 col-2 me-2">4</button>
+              <button class="button bg-secondary border-0 text-white rounded-2 col-2 me-2">5</button>
+              <button class="button bg-secondary border-0 text-white rounded-2 col-2 me-2">6</button>
+              <button class="button operator bg-secondary border-0 text-warning rounded-2 col-2 me-2">-</button>
+            </div>
+            <div class="mb-2 ms-2">
+              <button class="button bg-secondary border-0 text-white rounded-2 col-2 me-2">1</button>
+              <button class="button bg-secondary border-0 text-white rounded-2 col-2 me-2">2</button>
+              <button class="button bg-secondary border-0 text-white rounded-2 col-2 me-2">3</button>
+              <button class="button operator bg-secondary border-0 text-warning rounded-2 col-2 me-2">+</button>
+            </div>
+    
+            <div class="ms-2">
+              <button class="button bg-secondary border-0 text-warning rounded-2 col-2 me-2">00</button>
+              <button class="button bg-secondary border-0 text-white rounded-2 col-2 me-2">0</button>
+              <button class="button bg-secondary border-0 text-white rounded-2 col-2 me-2">.</button>
+              <button class="button equalBtn bg-warning border-0 text-white rounded-2 col-2 me-2">=</button>
+            </div>
+
+          </div>
+         
+        
+        </div>
+      </div>
+  
+
+
+    </main>
+    <footer>
+      <!-- place footer here -->
+    </footer>
+    <!-- Bootstrap JavaScript Libraries -->
+    
+
+    
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      let input = document.getElementById('inputBox');
+      let buttons = document.querySelectorAll('button');
+      let string = "";
+      let arr = Array.from(buttons);
+      arr.forEach(button => {
+          button.addEventListener('click', (e) =>{
+              if(e.target.innerHTML == '='){ 
+                  update(string)
+                  string = eval(string);
+                  input.value = string;
+              }
+
+              else if(e.target.innerHTML == 'AC'){
+                  string = "";
+                  input.value = string;
+                  update(string)="";
+
+              }
+              else if(e.target.innerHTML == 'D'){
+                  string = string.substring(0, string.length-1);
+                  input.value = string;
+              }
+              else{
+                  string += e.target.innerHTML;
+                  input.value = string;
+              }
+              
+          });
+      });
+      function update(str){
+          let val=document.getElementById('abc');
+          val.innerText=str;
+}
+    </script>
+  </body>
+</html>
